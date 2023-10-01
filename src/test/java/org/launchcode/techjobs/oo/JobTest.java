@@ -33,5 +33,17 @@ public class JobTest {
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Assert.assertNotEquals(jobA.getId(), jobB.getId());
     }
+    @Test
+    public void testToStringStartsAndEndsWithNewLine(){
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+    assertEquals(job.toString(), System.lineSeparator() + "ID: " + job.getId() + System.lineSeparator() + "Name: Product tester" + System.lineSeparator() + "Employer: ACME"+ System.lineSeparator() + "Location: Desert" + System.lineSeparator() + "Position Type: Quality control" + System.lineSeparator() + "Core Competency: Persistence" + System.lineSeparator());
+    }
+    @Test
+    public void testToStringHandlesEmptyField(){
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency());
+        assertEquals(job.toString(), System.lineSeparator() + "ID: " + job.getId() + System.lineSeparator() + "Name: Product tester" + System.lineSeparator() + "Employer: ACME"+ System.lineSeparator() + "Location: Desert" + System.lineSeparator() + "Position Type: Quality control" + System.lineSeparator() + "Core Competency: Data not available" + System.lineSeparator());
+    }
 }
 

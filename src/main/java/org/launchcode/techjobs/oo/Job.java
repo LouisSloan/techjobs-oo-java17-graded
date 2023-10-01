@@ -57,6 +57,25 @@ public class Job {
     public String getName() {
         return this.name;
     }
+    @Override
+    public String toString(){
+            if (this.name == null) {
+                this.setName("Data not available");
+            }
+        if (this.employer == null) {
+            this.employer = new Employer("Data not available");
+        }
+        if (this.location == null) {
+            this.location = new Location("Data not available");
+        }
+        if (this.positionType == null) {
+            this.positionType = new PositionType("Data not available");
+        }
+        if (this.coreCompetency.getValue() == null) {
+            this.coreCompetency = new CoreCompetency("Data not available");
+        }
+        return System.lineSeparator() + "ID: " + this.id + System.lineSeparator() + "Name: " + this.name + System.lineSeparator() + "Employer: " + this.employer + System.lineSeparator() + "Location: " + this.location + System.lineSeparator() + "Position Type: " + this.positionType + System.lineSeparator() + "Core Competency: " + this.coreCompetency + System.lineSeparator();
+    }
 
     public void setName(String name) {
         this.name = name;
