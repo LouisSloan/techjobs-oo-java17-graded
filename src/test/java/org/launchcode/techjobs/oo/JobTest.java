@@ -25,5 +25,13 @@ public class JobTest {
        assertEquals(job.getName(),"Product tester");
        assertTrue(String.valueOf(job.getName() instanceof String), true);
     }
+    @Test
+    public void testJobsForEquality(){
+        Job jobA = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job jobB = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Assert.assertNotEquals(jobA.getId(), jobB.getId());
+    }
 }
 
