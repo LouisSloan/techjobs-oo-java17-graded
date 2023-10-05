@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.oo;
 
+import javax.swing.text.Position;
 import java.util.Objects;
 
 public abstract class JobField {
@@ -36,20 +37,21 @@ public abstract class JobField {
         this.value = value;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
     @Override
     public String toString() {
+        if (this.getValue().isEmpty()) {
+            this.setValue("Data not available");
+        }
         return value;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Location)) return false;
-        Location location = (Location) o;
-        return getId() == location.getId();
+        if (!(o instanceof JobField)) return false;
+        JobField that = (JobField) o;
+        return id == that.id;
     }
 
     @Override
